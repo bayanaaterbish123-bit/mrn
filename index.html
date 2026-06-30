@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ганмөрөн ❤️</title>
+
+<style>
+            
+
+body{
+    background: linear-gradient(to bottom,#020617,#0f172a,#1e3a8a);
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Lock Screen */
+#lockScreen{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+#lockScreen h1{
+    font-size: 60px;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.4);
+}
+
+#lockScreen p{
+    margin-bottom: 20px;
+    font-size: 20px;
+    opacity: 0.9;
+}
+
+#lockScreen input{
+    width: 260px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 18px;
+    outline: none;
+    ;
+}
+
+#lockScreen button{
+    margin-top: 20px;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    background: #FFD700;
+    color: #020617;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+#lockScreen button:hover {
+    transform: scale(1.05);
+}
+
+/* Main Content */
+#mainSite{
+    display: none;
+}
+
+.hero{
+    text-align: center;
+    padding: 80px 20px 40px 20px;
+}
+
+.moon{
+    font-size: 100px;
+    text-shadow: 0 0 40px white;
+    animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(-15px); }
+}
+
+.hero h1{
+    font-size: 45px;
+    margin-top: 20px;
+}
+
+.hero h2{
+    margin-top: 10px;
+    font-size: 32px;
+    color: #FFD700;
+}
+
+
+
+/* Stars */
+.star{
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 2s infinite alternate;
+    z-index: 1;
+}
+
+@keyframes twinkle{
+    from{ opacity: 0.2; }
+    to{ opacity: 1; }
+}
+
+/* Shooting Stars */
+.shooting{
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 20px white;
+    animation: shoot 7s linear infinite;
+    z-index: 1;
+}
+
+@keyframes shoot{
+    0%{ transform: translate(-100px, -100px); }
+    100%{ transform: translate(1800px, 1000px); }
+}
+
+/* Memories Block */
+.memory{
+    width: 85%;
+    max-width: 1000px;
+    margin: 60px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.memory:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.memory img{
+    width: 400px;
+    max-width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(255,255,255,.15);
+    object-fit: cover;
+}
+
+/* Сулгийн мөрүүдийг зүүн тал руу нь яг таг тэгшлэх гол хэсэг */
+.text{
+    flex: 1;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Багцыг зүүн тийш нь шахна */
+}
+
+.text h2{
+    color: #FFD700;
+    margin-bottom: 20px;
+    font-size: 28px;
+    align-self: flex-start;
+}
+
+.poem-box {
+    text-align: left; /* Мөр бүрийн эхлэлийг шугам шиг тэгшлэнэ */
+    width: 100%;
+}
+
+.poem-line {
+    display: block;
+    line-height: 1.8;
+    font-size: 20px;
+    margin-bottom: 4px;
+}
+
+footer{
+    text-align: center;
+    padding: 80px 20px;
+    font-size: 22px;
+    opacity: 0.8;
+}
+
+/* Mobile Responsive */
+@media(max-width: 900px){
+    .memory, .memory:nth-child(even){
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        width: 90%;
+    }
+
+    .memory img{
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .text{
+        max-width: 100%;
+        align-items: center; /* Гар утас дээр голлуулж харагдуулна, гэхдээ шүлэг дотроо зүүнээсээ эхэлнэ */
+    }
+    
+    .text h2 {
+        align-self: center;
+    }
+
+    .poem-box {
+        display: inline-block;
+        width: auto;
+        max-width: 100%;
+        text-align: left; /* Гар утас дээр ч мөрүүд тэгш байна */
+    }
+
+    #lockScreen h1{
+        font-size: 40px;
+        letter-spacing: 5px;
+    }
+
+    .hero h1{
+        font-size: 32px;
+    }
+    .hero h2 {
+        font-size: 26px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="lockScreen">
+    <h1>ГАНМӨРӨН</h1>
+    <p>Нууц үгээ оруулна уу 🌙</p>
+    <input type="password" id="password" placeholder="Нууг үг">
+    <button onclick="checkPassword()">Нээх</button>
+</div>
+
+<div id="mainSite">
+
+    <audio id="bgMusic" autoplay loop hidden>
+        <source src="source/See You Again.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hero">
+        <div class="moon">🌙</div>
+        <h1>Төрсөн өдрийн мэнд хүргэе ❤️</h1>
+        <h2>Ганмөрөн</h2>
+        <div id="countdown"></div>
+    </div>
+
+    <div class="memory">
+        <img src="img/1.jpg" alt="Дурсамж 1">
+        <div class="text">
+            <h2>❤️ </h2>
+            <div class="poem-box">
+                <span class="poem-line">Төрсөн өдрийн мэнд хүргэе </span>
+                <span class="poem-line">Чи минь миний чимээгүй ирсэн хайр </span>
+                <span class="poem-line">Чимэг гоёлгүй даруухан ирсэн жаргал</span>
+                <span class="poem-line">Ганцхан удаа амьдардаг хорвоо дээр</span>
+                <span class="poem-line">Гарыг чинь атган суумаар байна Гал халуун хүслээ чихэнд чинь шивнээд</span>
+                <span class="poem-line">Ганцаардлыг мартан амьдармаар байна</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="memory">
+        <img src="img/2.jpg" alt="Дурсамж 2">
+        <div class="text">
+            <h2>🌙</h2>
+            <div class="poem-box">
+                <span class="poem-line">Чамайг хайрлахгүй байна гэдэг тэнгэрээс од шүүрэхтэй адил</span>
+                <span class="poem-line">Чамайг бодохгүй байна гэдэг үүлэн дээгүүр нисэхтэй адил</span>
+                <span class="poem-line">Чамайг санахгүй байна гэдэг үхэхээс ч хэцүү</span>
+                <span class="poem-line">Чамайг бодохгүй байна гэдэг тамд унахаас ч хэцүү</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="memory">
+        <img src="img/3.jpg" alt="Дурсамж 3">
+        <div class="text">
+            <h2>✨</h2>
+            <div class="poem-box">
+                <span class="poem-line">Нэг тэнгэрийн дор, нэг сарыг харж байгаа цагт бид хэзээ ч хол биш.</span>
+                <span class="poem-line">Тэргэл саран доор чамайгаа хүлээн</span>
+                <span class="poem-line">Тэвэр дүүрэн сарнай атган зогссон</span>
+                <span class="poem-line">Уулзана гэхээр зүрх минь догдлоод</span>
+                <span class="poem-line">Учралт хонгор чамайг бодон сууна</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="memory">
+        <img src="img/4.jpg" alt="Дурсамж 4">
+        <div class="text">
+            <h2>⭐</h2>
+            <div class="poem-box">
+                <span class="poem-line">Чамтай өнгөрүүлсэн мөч бүр миний хамгийн дуртай дурсамж.</span>
+                <span class="poem-line">чамтай учирсан учралд минь буруу байхгүй</span>
+                <span class="poem-line">чаммайг харах болсон нүдэнд минь буруу байхгүй</span>
+                <span class="poem-line">чамайг санах болсон сэтгэлд минь буруу байхгүй</span>
+                <span class="poem-line">чамайг хайрлах болсон зүрхэнд минь буруу байхгүй</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="memory">
+        <img src="img/5.jpg" alt="Дурсамж 5">
+        <div class="text">
+            <h2>🌌</h2>
+            <div class="poem-box">
+                <span class="poem-line">Зарим хүмүүс амьдралд зүгээр нэг орж ирдэггүй, гэрэл авчирдаг.</span>
+                <span class="poem-line">Тэргэл саран доор чамайгаа хүлээн</span>
+                <span class="poem-line">Тэвэр дүүрэн сарнай атган зогссон</span>
+                <span class="poem-line">Уулзана гэхээр зүрх минь догдлоод</span>
+                <span class="poem-line">Учралт хонгор чамайг бодон сууна</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="memory">
+        <img src="img/6.jpg" alt="Дурсамж 6">
+        <div class="text">
+            <h2>🎂</h2>
+            <div class="poem-box">
+                <span class="poem-line">Би чамд хайртай</span>
+                <span class="poem-line">Бие сэтгэлээ зориулъя</span>
+                <span class="poem-line">Хайрынхаа илчээр дулаацуулж</span>
+                <span class="poem-line">Хамаг бүхнээ зориулъя ❤️</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="memory">
+        <img src="img/7.jpg" alt="Дурсамж 7">
+        <div class="text">
+            <h2>❤️</h2>
+            <div class="poem-box">
+                <span class="poem-line">Чамайг нэг тусгаар улс гэвэл</span>
+                <span class="poem-line">Хил зөрчсөн этгээд нь би байна</span>
+                <span class="poem-line">Тагнах гэж биш хайрлах гэж ирсэн хүнийг</span>
+                <span class="poem-line">Танай улсын хууль яаж шийтгэдэг юм бэ?</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        See you again ❤️
+    </footer>
+
+</div>
+
+<script>
+function checkPassword(){
+    let pass = document.getElementById("password").value;
+
+    if(pass.toUpperCase() === "GANMORON"){
+        document.getElementById("lockScreen").style.display="none";
+        document.getElementById("mainSite").style.display="block";
+
+        const music = document.getElementById("bgMusic");
+        music.volume = 0.35;
+        music.play().catch(()=>{
+            console.log("Autoplay blocked");
+        });
+    }else{
+        alert("Нууц үг буруу байна.");
+    }
+}
+
+// Одод үүсгэх
+for(let i=0; i<150; i++){
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.left = Math.random()*100+"vw";
+    star.style.top = Math.random()*100+"vh";
+    star.style.animationDelay = Math.random()*2+"s";
+    document.body.appendChild(star);
+}
+
+// Харвадаг одод үүсгэх
+for(let i=0; i<5; i++){
+    let s = document.createElement("div");
+    s.className = "shooting";
+    s.style.left = (-300*i)+"px";
+    s.style.top = Math.random()*300+"px";
+    s.style.animationDelay = (i*3)+"s";
+    document.body.appendChild(s);
+}
+
+
+
+function updateCountdown(){
+    const today = new Date();   
+
+    if (days > 0) {
+        document.getElementById("countdown").innerHTML = "⏳ " + days + " хоног үлдлээ";
+    } else if (days === 0) {
+        document.getElementById("countdown").innerHTML = "🎉 Өнөөдөр төрсөн өдөр! 🎂";
+    } else {
+        document.getElementById("countdown").innerHTML = "❤️ Баярт өдөр өнгөрлөө";
+    }
+}
+
+updateCountdown();
+</script>
+
+</body>
+</html>
